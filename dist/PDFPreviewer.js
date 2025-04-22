@@ -303,7 +303,7 @@ const PDFPreviewer = (0, react_1.forwardRef)(({ file, pageMaxWidth, isSmallScree
                     getDevicePixelRatio,
                     containerHeight,
                     numPages,
-                }, onItemsRendered: handleItemsRendered }, PageRenderer_1.default)))),
+                } }, PageRenderer_1.default)))),
         shouldRequestPassword && internalRenderPasswordForm()));
 });
 PDFPreviewer.displayName = 'PDFPreviewer';

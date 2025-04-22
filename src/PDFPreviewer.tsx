@@ -402,7 +402,7 @@ const PDFPreviewer = forwardRef<PDFPreviewerHandle, Props>(
                                     containerHeight,
                                     numPages,
                                 }}
-                                onItemsRendered={handleItemsRendered}
+                                // onItemsRendered={handleItemsRendered}
                             >
                                 {PageRenderer}
                             </List>

@@ -23,6 +23,12 @@ function App() {
                         file={file}
                         pageMaxWidth={1000}
                         isSmallScreen={false}
+                        onLoaded={() => {
+                            console.log('스껄?');
+                        }}
+                        onLoadError={() => {
+                            console.log('스껄?2');
+                        }}
                     />
                 </>
             ) : (

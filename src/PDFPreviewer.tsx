@@ -160,7 +160,7 @@ const PDFPreviewer = forwardRef<PDFPreviewerHandle, Props>(
          * user input is no longer required.
          */
         const onDocumentLoadSuccess = (pdf: PDFDocument) => {
-            pdfDocRef.current = pdf;
+            // pdfDocRef.current = pdf;
 
             Promise.all(
                 times(pdf.numPages, (index: number) => {
@@ -175,8 +175,8 @@ const PDFPreviewer = forwardRef<PDFPreviewerHandle, Props>(
                     setShouldRequestPassword(false);
                     setIsPasswordInvalid(false);
                     setIsFullyLoaded(true);
-                    lastReportedPageRef.current = null;
-                    onLoadedCalledRef.current = false;
+                    // lastReportedPageRef.current = null;
+                    // onLoadedCalledRef.current = false;
                 },
                 () => {
                     console.error('Error getting page viewports:');
@@ -402,7 +402,7 @@ const PDFPreviewer = forwardRef<PDFPreviewerHandle, Props>(
                                     containerHeight,
                                     numPages,
                                 }}
-                                // onItemsRendered={handleItemsRendered}
+                                onItemsRendered={handleItemsRendered}
                             >
                                 {PageRenderer}
                             </List>

@@ -124,7 +124,7 @@ const PDFPreviewer = (0, react_1.forwardRef)(({ file, pageMaxWidth, isSmallScree
      * user input is no longer required.
      */
     const onDocumentLoadSuccess = (pdf) => {
-        pdfDocRef.current = pdf;
+        // pdfDocRef.current = pdf;
         Promise.all((0, times_1.default)(pdf.numPages, (index) => {
             const pageNumber = index + 1;
             return pdf.getPage(pageNumber).then((page) => page.getViewport({ scale: 1 }));
@@ -134,8 +134,8 @@ const PDFPreviewer = (0, react_1.forwardRef)(({ file, pageMaxWidth, isSmallScree
             setShouldRequestPassword(false);
             setIsPasswordInvalid(false);
             setIsFullyLoaded(true);
-            lastReportedPageRef.current = null;
-            onLoadedCalledRef.current = false;
+            // lastReportedPageRef.current = null;
+            // onLoadedCalledRef.current = false;
         }, () => {
             console.error('Error getting page viewports:');
             onLoadError === null || onLoadError === void 0 ? void 0 : onLoadError();
@@ -303,7 +303,7 @@ const PDFPreviewer = (0, react_1.forwardRef)(({ file, pageMaxWidth, isSmallScree
                     getDevicePixelRatio,
                     containerHeight,
                     numPages,
-                } }, PageRenderer_1.default)))),
+                }, onItemsRendered: handleItemsRendered }, PageRenderer_1.default)))),
         shouldRequestPassword && internalRenderPasswordForm()));
 });
 PDFPreviewer.displayName = 'PDFPreviewer';

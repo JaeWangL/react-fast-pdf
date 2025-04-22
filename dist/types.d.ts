@@ -1,8 +1,5 @@
+import { RenderParameters } from 'pdfjs-dist/types/src/display/api';
 import { CSSProperties } from 'react';
-type RenderParameters = {
-    canvasContext: CanvasRenderingContext2D;
-    viewport: PageViewport;
-};
 type RenderTask = {
     promise: Promise<void>;
     cancel: () => void;
@@ -13,6 +10,10 @@ type Page = {
     }) => PageViewport;
     render: (params: RenderParameters) => RenderTask;
 };
+type PDFDocument = {
+    numPages: number;
+    getPage: (pageNumber: number) => Promise<Page>;
+};
 type PageViewport = {
     height: number;
     width: number;
@@ -20,5 +21,5 @@ type PageViewport = {
 type ComponentStyles = {
     [key: string]: CSSProperties;
 };
-export type { PageViewport, ComponentStyles, Page, RenderParameters, RenderTask };
+export type { PDFDocument, PageViewport, ComponentStyles, Page, RenderParameters, RenderTask };
 //# sourceMappingURL=types.d.ts.map

@@ -9,8 +9,7 @@ import {Document, pdfjs} from 'react-pdf';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import 'react-pdf/dist/Page/TextLayer.css';
 
-import {PDFDocumentProxy} from 'pdfjs-dist';
-import type {PageViewport} from './types';
+import type {PageViewport, PDFDocument} from './types';
 import {pdfPreviewerStyles as styles} from './styles';
 import PDFPasswordForm, {type PDFPasswordFormProps} from './PDFPasswordForm';
 import PageRenderer from './PageRenderer';
@@ -86,7 +85,7 @@ const PDFPreviewer = forwardRef<PDFPreviewerHandle, Props>(
         const [shouldRequestPassword, setShouldRequestPassword] = useState(false);
         const [isPasswordInvalid, setIsPasswordInvalid] = useState(false);
         const [isFullyLoaded, setIsFullyLoaded] = useState(false);
-        const pdfDocRef = useRef<PDFDocumentProxy | null>(null);
+        const pdfDocRef = useRef<PDFDocument | null>(null);
         const onLoadedCalledRef = useRef(false);
         const lastReportedPageRef = useRef<number | null>(null);
         const containerRef = useRef<HTMLDivElement>(null);
@@ -160,7 +159,7 @@ const PDFPreviewer = forwardRef<PDFPreviewerHandle, Props>(
          * hide/reset PDF password form, and notify parent component that
          * user input is no longer required.
          */
-        const onDocumentLoadSuccess = (pdf: PDFDocumentProxy) => {
+        const onDocumentLoadSuccess = (pdf: PDFDocument) => {
             pdfDocRef.current = pdf;
 
             Promise.all(
@@ -349,7 +348,7 @@ const PDFPreviewer = forwardRef<PDFPreviewerHandle, Props>(
                             viewport,
                         };
                         // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-call
-                        const renderTask = page.render(renderContext);
+                        const renderTask = page.render(renderContext as never);
 
                         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,no-restricted-syntax
                         await renderTask.promise;
